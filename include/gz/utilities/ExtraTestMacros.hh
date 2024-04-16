@@ -28,6 +28,8 @@
 #define IGN_UTILS_TEST_DISABLED_ON_WIN32(TestName) \
   DETAIL_IGN_UTILS_TEST_DISABLED_ON_WIN32(TestName)
 
+#define GZ_UTILS_TEST_DISABLED_ON_WIN32(TestName) \
+  DETAIL_IGN_UTILS_TEST_DISABLED_ON_WIN32(TestName)
 /// \brief Restrict the execution of the test for the Mac platform.
 /// The test will be compiled on Windows too but will never be run as
 /// part of the test suite. The macro uses the Disabled_ prefix provided
@@ -36,6 +38,8 @@
 #define IGN_UTILS_TEST_DISABLED_ON_MAC(TestName) \
   DETAIL_IGN_UTILS_TEST_DISABLED_ON_MAC(TestName)
 
+#define GZ_UTILS_TEST_DISABLED_ON_MAC(TestName) \
+  DETAIL_IGN_UTILS_TEST_DISABLED_ON_MAC(TestName)
 /// \brief Restrict the execution of the test to just the Linux platform
 /// Other platforms will get the test compiled but it won't be run
 /// as part of the test suite execution.
@@ -44,4 +48,6 @@
 #define IGN_UTILS_TEST_ENABLED_ONLY_ON_LINUX(TestName) \
   DETAIL_IGN_UTILS_TEST_ENABLED_ONLY_ON_LINUX(TestName)
 
+#define GZ_UTILS_TEST_ENABLED_ONLY_ON_LINUX(TestName) \
+  DETAIL_IGN_UTILS_TEST_ENABLED_ONLY_ON_LINUX(TestName)
 #endif
