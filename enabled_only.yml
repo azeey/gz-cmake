@@ -1,0 +1,15 @@
+id: enable_only_on_tests
+language: Cpp
+rule:
+    pattern: $TEST($A, $MACRO($B)) { $$$C }
+constraints:
+  TEST: {regex: "TEST|TEST_F|TEST_P"}
+  MACRO: {regex: "GZ_UTILS_TEST_ENABLED.*"}
+transform:
+  NEW_MACRO: replace($MACRO, replace="ENABLED", by="NOT_SKIPPED")
+fix: |
+  $TEST($A, $B)
+  {
+    $NEW_MACRO
+    $$$C
+  }

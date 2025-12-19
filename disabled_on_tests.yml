@@ -1,0 +1,15 @@
+id: disabled_on_tests
+language: Cpp
+rule:
+    pattern: $TEST($A, $MACRO($B)) { $$$C }
+constraints:
+  TEST: {regex: "TEST|TEST_F|TEST_P"}
+  MACRO: {regex: "GZ_UTILS_TEST_DISABLED.*"}
+transform:
+  NEW_MACRO: replace($MACRO, replace="DISABLED", by="SKIPPED")
+fix: |
+  $TEST($A, $B)
+  {
+    $NEW_MACRO
+    $$$C
+  }
