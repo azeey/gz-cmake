@@ -8,6 +8,9 @@
  *     http://www.apache.org/licenses/LICENSE-2.0
  *
  * Unless required by applicable law or agreed to in writing, software
+ * distributed under the License is-2.0
+ *
+ * Unless required by applicable law or agreed to in writing, software
  * distributed under the License is distributed on an "AS IS" BASIS,
  * WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
  * See the License for the specific language governing permissions and
@@ -28,6 +31,11 @@
 #define GZ_UTILS_TEST_DISABLED_ON_WIN32(TestName) \
   DETAIL_GZ_UTILS_TEST_DISABLED_ON_WIN32(TestName)
 
+/// \brief Skips the execution of the test for the Windows platform.
+/// The test will be compiled on Windows too but will be skipped.
+#define GZ_UTILS_TEST_SKIPPED_ON_WIN32 \
+  DETAIL_GZ_UTILS_TEST_SKIPPED_ON_WIN32
+
 /// \brief Restrict the execution of the test for the Mac platform.
 /// The test will be compiled on Windows too but will never be run as
 /// part of the test suite. The macro uses the Disabled_ prefix provided
@@ -36,6 +44,11 @@
 #define GZ_UTILS_TEST_DISABLED_ON_MAC(TestName) \
   DETAIL_GZ_UTILS_TEST_DISABLED_ON_MAC(TestName)
 
+/// \brief Skips the execution of the test for the Mac platform.
+/// The test will be compiled on Mac too but will be skipped.
+#define GZ_UTILS_TEST_SKIPPED_ON_MAC \
+  DETAIL_GZ_UTILS_TEST_SKIPPED_ON_MAC
+
 /// \brief Restrict the execution of the test to just the Linux platform
 /// Other platforms will get the test compiled but it won't be run
 /// as part of the test suite execution.
@@ -43,5 +56,10 @@
 /// https://chromium.googlesource.com/external/github.com/google/googletest/+/HEAD/googletest/docs/advanced.md
 #define GZ_UTILS_TEST_ENABLED_ONLY_ON_LINUX(TestName) \
   DETAIL_GZ_UTILS_TEST_ENABLED_ONLY_ON_LINUX(TestName)
+
+/// \brief Skips the execution of the test on platforms other than Linux.
+/// Other platforms will get the test compiled but it will be skipped.
+#define GZ_UTILS_TEST_NOT_SKIPPED_ONLY_ON_LINUX \
+  DETAIL_GZ_UTILS_TEST_NOT_SKIPPED_ONLY_ON_LINUX
 
 #endif

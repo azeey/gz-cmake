@@ -18,6 +18,7 @@
 #ifndef GZ_UTILITIES_DETAIL_EXTRATESTMACROS_HH
 #define GZ_UTILITIES_DETAIL_EXTRATESTMACROS_HH
 
+#include <gtest/gtest.h>
 #include <gz/utilities/SuppressWarning.hh>
 
 #define DETAIL_GZ_UTILS_ADD_DISABLED_PREFIX(x) DISABLED_##x
@@ -27,11 +28,16 @@
   #define DETAIL_GZ_UTILS_TEST_DISABLED_ON_WIN32(TestName) \
       DETAIL_GZ_UTILS_ADD_DISABLED_PREFIX(TestName)
 
+  #define DETAIL_GZ_UTILS_TEST_SKIPPED_ON_WIN32 \
+      GTEST_SKIP()
+
 #else
 
   #define DETAIL_GZ_UTILS_TEST_DISABLED_ON_WIN32(TestName) \
       TestName
 
+  #define DETAIL_GZ_UTILS_TEST_SKIPPED_ON_WIN32 \
+      (void)0
 #endif
 
 #if defined __APPLE__
@@ -39,11 +45,16 @@
   #define DETAIL_GZ_UTILS_TEST_DISABLED_ON_MAC(TestName) \
       DETAIL_GZ_UTILS_ADD_DISABLED_PREFIX(TestName)
 
+  #define DETAIL_GZ_UTILS_TEST_SKIPPED_ON_MAC \
+      GTEST_SKIP()
+
 #else
 
   #define DETAIL_GZ_UTILS_TEST_DISABLED_ON_MAC(TestName) \
       TestName
 
+  #define DETAIL_GZ_UTILS_TEST_SKIPPED_ON_MAC \
+      (void)0
 #endif
 
 #if defined __linux__
@@ -51,11 +62,15 @@
   #define DETAIL_GZ_UTILS_TEST_ENABLED_ONLY_ON_LINUX(TestName) \
       TestName
 
+  #define DETAIL_GZ_UTILS_TEST_NOT_SKIPPED_ONLY_ON_LINUX \
+      (void)0
 #else
 
   #define DETAIL_GZ_UTILS_TEST_ENABLED_ONLY_ON_LINUX(TestName) \
       DETAIL_GZ_UTILS_ADD_DISABLED_PREFIX(TestName)
 
+  #define DETAIL_GZ_UTILS_TEST_NOT_SKIPPED_ONLY_ON_LINUX \
+      GTEST_SKIP()
 #endif
 
 
